@@ -1,0 +1,31 @@
+﻿@using System.Linq;
+@model IList<WebClinica.Web.Models.ConvenioProfissionalQueAtendeViewModel>
+
+<table class="table table-condensed table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayText("Selecionar")
+        </th>
+       
+        <th>
+            Profissional
+        </th>
+        
+    </tr>
+
+@for(var i=0; i<Model.Count;i++)
+{
+    <tr>
+        <td>
+            @Html.CheckBoxFor(modelItem => Model[i].Ativo)
+        </td>
+        <td>
+            @Html.DisplayTextFor(modelItem => Model[i].Nome)
+            @Html.HiddenFor(modelItem => Model[i].ProfissionalId)
+            @Html.HiddenFor(modelItem => Model[i].Nome)
+        </td>
+       
+    </tr>
+}
+
+</table>

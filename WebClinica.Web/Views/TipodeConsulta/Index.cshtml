@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Tipos de Consulta";
+
+}
+<br />
+
+<table id="gridDadosTipoConsulta" class="table table-condensed table-hover table-striped">
+    <thead>
+        <tr>
+            <th data-column-id="TipoConsultaId" data-identifier="true" data-type="numeric">Código</th>
+            <th data-column-id="Descricao" data-order="asc">Descrição</th>          
+            <th data-column-id="Ativo" data-order="desc">Ativo</th>
+            <th data-column-id="Faturar" data-order="desc">Faturar</th>
+            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ação</th>
+        </tr>
+    </thead>
+</table>
+
+<center>
+    <p>
+        @Html.ActionLink("Cadastrar Novo Tipo de Consulta", "Novo")
+</center>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Telas/TipoConsulta/index.js")
+}
+
+
+
+

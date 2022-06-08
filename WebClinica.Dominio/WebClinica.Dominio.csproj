@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54062986-A0AB-4603-8F9B-67F74CA55E5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebClinica.Dominio</RootNamespace>
+    <AssemblyName>WebClinica.Dominio</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contratos\Repositorios\IDatabaseTransaction.cs" />
+    <Compile Include="Contratos\Repositorios\IRepositorioBase.cs" />
+    <Compile Include="Contratos\Repositorios\IUnitOfWork.cs" />
+    <Compile Include="Contratos\Servicos\IAtendimentoService.cs" />
+    <Compile Include="Contratos\Servicos\ICidadeService.cs" />
+    <Compile Include="Contratos\Servicos\IClinicaService.cs" />
+    <Compile Include="Contratos\Servicos\IComissaoService.cs" />
+    <Compile Include="Contratos\Servicos\IConfiguracaoClinicaService.cs" />
+    <Compile Include="Contratos\Servicos\IConselhoProfissionalService.cs" />
+    <Compile Include="Contratos\Servicos\IConvenioService.cs" />
+    <Compile Include="Contratos\Servicos\IDescritivoTabelasPlanoService.cs" />
+    <Compile Include="Contratos\Servicos\IEscolaridadeService.cs" />
+    <Compile Include="Contratos\Servicos\IEspecialidadeService.cs" />
+    <Compile Include="Contratos\Servicos\IEstadoService.cs" />
+    <Compile Include="Contratos\Servicos\IFatorSanguineoService.cs" />
+    <Compile Include="Contratos\Servicos\IFornecedorService.cs" />
+    <Compile Include="Contratos\Servicos\IModeloAnamneseService.cs" />
+    <Compile Include="Contratos\Servicos\IPacienteService.cs" />
+    <Compile Include="Contratos\Servicos\IPerfilService.cs" />
+    <Compile Include="Contratos\Servicos\IPerguntaAnamneseService.cs" />
+    <Compile Include="Contratos\Servicos\IProcedimentoCobrancaService.cs" />
+    <Compile Include="Contratos\Servicos\IProcedimentoService.cs" />
+    <Compile Include="Contratos\Servicos\IProfissionalService.cs" />
+    <Compile Include="Contratos\Servicos\IRespostaPerguntaAnamneseService.cs" />
+    <Compile Include="Contratos\Servicos\ITabelaCBHPMService.cs" />
+    <Compile Include="Contratos\Servicos\ITabelaDerivadaCobrancaProcedimentoService.cs" />
+    <Compile Include="Contratos\Servicos\ITabelaNormativaUSSService.cs" />
+    <Compile Include="Contratos\Servicos\ITipodeConsultaService.cs" />
+    <Compile Include="Contratos\Servicos\IUsuarioService.cs" />
+    <Compile Include="Entidades\Cid.cs" />
+    <Compile Include="Entidades\PadraoTISS\DescricaoTabelasTUSS.cs" />
+    <Compile Include="Entidades\DescritivoTabelasPlano.cs" />
+    <Compile Include="Entidades\ConvenioPlano.cs" />
+    <Compile Include="Entidades\PadraoTISS\Guia.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela18.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela19.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela20.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela22.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela23.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela24.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela25.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela26.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela27.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela28.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela29.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela30.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela31.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela32.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela33.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela34.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela35.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela36.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela37.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela38.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela39.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela40.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela41.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela42.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela43.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela44.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela45.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela46.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela47.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela48.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela49.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela50.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela51.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela52.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela53.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela54.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela55.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela56.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela57.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela58.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela59.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela60.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela61.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela62.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela63.cs" />
+    <Compile Include="Entidades\PadraoTISS\Tabela64.cs" />
+    <Compile Include="Entidades\PadraoTISS\TipoGuia.cs" />
+    <Compile Include="Entidades\ProntuarioProcedimento.cs" />
+    <Compile Include="Entidades\ProntuarioRespostaAnamnese.cs" />
+    <Compile Include="Entidades\TabelaDerivadaCobrancaProcedimento.cs" />
+    <Compile Include="Entidades\TabelaDerivadaCobrancaProcedimentoItem.cs" />
+    <Compile Include="Entidades\Agendamento.cs" />
+    <Compile Include="Entidades\ASO.cs" />
+    <Compile Include="Entidades\ASOFichaClinica.cs" />
+    <Compile Include="Entidades\Atendimento.cs" />
+    <Compile Include="Entidades\Atestado.cs" />
+    <Compile Include="Entidades\Banco.cs" />
+    <Compile Include="Entidades\CategoriaCentroCusto.cs" />
+    <Compile Include="Entidades\CentroCusto.cs" />
+    <Compile Include="Entidades\Clinica.cs" />
+    <Compile Include="Entidades\Comissao.cs" />
+    <Compile Include="Entidades\ConfiguracaoClinica.cs" />
+    <Compile Include="Entidades\ConfiguracaoFinanceiro.cs" />
+    <Compile Include="Entidades\ContaCorrente.cs" />
+    <Compile Include="Entidades\Convenio.cs" />
+    <Compile Include="Entidades\ConvenioProfissional.cs" />
+    <Compile Include="Entidades\EscalaAtendimentoProfissional.cs" />
+    <Compile Include="Entidades\EscalaAtendimentoProfissionalDiaSemana.cs" />
+    <Compile Include="Entidades\Escolaridade.cs" />
+    <Compile Include="Entidades\ExameComplementarPCMSO.cs" />
+    <Compile Include="Entidades\ExameFisico.cs" />
+    <Compile Include="Entidades\FatorSanguineo.cs" />
+    <Compile Include="Entidades\Fatura.cs" />
+    <Compile Include="Entidades\Fluxo\FluxoUsuario.cs" />
+    <Compile Include="Entidades\FormaPagamento.cs" />
+    <Compile Include="Entidades\FornecedorClinica.cs" />
+    <Compile Include="Entidades\GrupoProduto.cs" />
+    <Compile Include="Entidades\ModeloAnamnese.cs" />
+    <Compile Include="Entidades\ModeloPergunta.cs" />
+    <Compile Include="Entidades\MovimentacaoEstoque.cs" />
+    <Compile Include="Entidades\ObjetoCompostos\ComissaoEntidade.cs" />
+    <Compile Include="Entidades\Orcamento.cs" />
+    <Compile Include="Entidades\Paciente.cs" />
+    <Compile Include="Entidades\PacienteDadosComplementares.cs" />
+    <Compile Include="Entidades\Pais.cs" />
+    <Compile Include="Entidades\Parcelamento.cs" />
+    <Compile Include="Entidades\Perfil.cs" />
+    <Compile Include="Entidades\PerguntasAnamnese.cs" />
+    <Compile Include="Entidades\Procedimento.cs" />
+    <Compile Include="Entidades\ProcedimentoCobranca.cs" />
+    <Compile Include="Entidades\Produto.cs" />
+    <Compile Include="Entidades\Profissional.cs" />
+    <Compile Include="Entidades\RespostaPerguntaAnamnese.cs" />
+    <Compile Include="Entidades\RiscoOcupacional.cs" />
+    <Compile Include="Entidades\SolicitacaoExame.cs" />
+    <Compile Include="Entidades\StatusAgendamento.cs" />
+    <Compile Include="Entidades\TabelaCBHPM.cs" />
+    <Compile Include="Entidades\TabelaNormativaUSS.cs" />
+    <Compile Include="Entidades\TipodeConsulta.cs" />
+    <Compile Include="Entidades\TipoMovimento.cs" />
+    <Compile Include="Entidades\Titulo.cs" />
+    <Compile Include="Entidades\UnidadeMedida.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Entidades\Fornecedor.cs" />
+    <Compile Include="Entidades\WCidade.cs" />
+    <Compile Include="Entidades\WEstado.cs" />
+    <Compile Include="Entidades\PorteAnestesico.cs" />
+    <Compile Include="Entidades\PorteProcedimento.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebClinica.Comum\WebClinica.Comum.csproj">
+      <Project>{6c83f140-2d9a-4dab-8770-20974b075bbd}</Project>
+      <Name>WebClinica.Comum</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

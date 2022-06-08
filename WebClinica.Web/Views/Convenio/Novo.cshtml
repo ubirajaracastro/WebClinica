@@ -1,0 +1,302 @@
+﻿@using System.Linq;
+@using WebClinica.Web.Models
+@model WebClinica.Web.Models.ConvenioViewModel
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #box-toggle {
+        width: 900px;
+        margin: 0 auto;
+        text-align: justify;
+    }
+
+        #box-toggle .tgl {
+            margin-bottom: 30px;
+        }
+
+        #box-toggle .tg2 {
+            margin-bottom: 30px;
+        }
+
+        #box-toggle .tg3 {
+            margin-bottom: 30px;
+        }
+
+        #box-toggle .tg4 {
+            margin-bottom: 30px;
+        }
+
+        #box-toggle span {
+            display: block;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            color: #c30;
+            margin-top: 15px;
+        }
+</style>
+
+
+@using (Ajax.BeginForm("Salvar", "Convenio",
+                        new AjaxOptions
+                        {
+                            OnSuccess = "OnSuccessCadastro",
+                            OnFailure = "OnErro",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "POST"
+
+                        }))
+{
+    @Html.AntiForgeryToken()
+
+    <center>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4>Manutenção de Convênios</h4>
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.ConvenioID)
+                </div>
+            </div>
+
+            <div id="box-toggle">
+                <div class="tgl">
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            Data do Cadastro: @Html.DisplayFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            CGC:
+                            @Html.EditorFor(model => model.CGC, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+
+                        <div class="col-md-9">
+                            Nome do Convênio:
+                            @Html.EditorFor(model => model.NomeConvenio, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NomeConvenio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            Número do Registro na ANS:
+                            @Html.EditorFor(model => model.NumeroRegistroANS, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NumeroRegistroANS)
+                        </div>
+
+                        <div class="col-md-9">
+                            Nome de Contato:
+                            @Html.EditorFor(model => model.Contato, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Contato)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            Telefone:
+                            @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="col-md-9">
+                            Email:
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            Deixar Convênio Inativo?
+                            @Html.CheckBoxFor(model => model.Ativo)
+                        </div>
+
+                        <div class="col-md-9">
+                            Web Site:
+                            @Html.EditorFor(model => model.Site, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            Observação:
+                        </div>
+
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tgl3">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            Tabela Utilizada:
+                            @Html.DropDownListFor(model => model.TabelaId,
+                           (SelectList)ViewBag.Tabelas, "Selecione", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TabelaId)     
+                        </div>
+                        <div class="col-md-8">
+                            Número do Contrato:
+                            @Html.EditorFor(model => model.NumeroContrato, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            Atende Radiologia?
+                            @Html.CheckBoxFor(model => model.AtendeRadiologia, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="col-md-6">
+                            Valor do Filme:
+                            @Html.EditorFor(model => model.ValorFilme, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.ValorFilme)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            Calcular Hora Extra para cirurgias?
+                            @Html.CheckBoxFor(model => model.CalcularExtraCirurgia, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="col-md-3">
+                            A partir das:
+                            Seg-Sex
+                            @Html.EditorFor(model => model.HorarioSemanalHoraExtra, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+
+                        </div>
+                        <div class="col-md-3">
+                            Final de Semana:
+                            @Html.EditorFor(model => model.HorarioFinalSemanaHoraExtra, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            Pagamento Adicional do Médico?
+                            @Html.CheckBoxFor(model => model.PagamentoAdicionalMedico, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+
+                        <div class="col-md-2">
+                            Percentual Pago(%)
+                        </div>
+                        <div class="col-md-3">
+                            Consultas:
+                            @Html.EditorFor(model => model.PercentualSobConsulta, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+
+                        </div>
+                        <div class="col-md-3">
+                            Exame/Procedimento:
+                            @Html.EditorFor(model => model.PercentualSobProcedimento, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            Número de Digitos da Carteira:
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.NroDigitosCarteira, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model =>model.NroDigitosCarteira)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            Prazo em dias Para Pagamento Prestação de Serviço:
+                        </div>
+
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.QteDiasFaturamento, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.QteDiasFaturamento)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            Seu número junto ao Convênio:
+                        </div>
+
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.NumeroJuntoaoConvenio, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tgl2">
+                    <h4>Profissionais que Atendem por esse Convênio</h4>
+                    @Html.Partial("_ProfissionalAtendenoConvenio", Model.ProfissionaisQueAtendem)
+                </div>
+                <br />
+
+                <br />
+                <div class="form-actions">
+                    <button type="submit" id="btNovo" class="btn btn-primary">Salvar</button>
+                    <button type="button" id="btCancelar" class="btn">Cancelar</button>
+                </div>
+
+                <div id="divPlano" style="display:none">
+                    <br /><span id="Plano">Planos do Convênio </span>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            Nome do Plano
+                            @Html.EditorFor(model => model.Plano.NomePlano, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+
+                        <div class="col-md-5">
+                            Tabela Utilizada:
+                            @Html.DropDownListFor(model => model.Plano.CodigoTabela,
+                           (SelectList)ViewBag.Tabelas, "Selecione", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" onclick="salvarPlano()" type="button">Adicionar Plano</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div id="resultado" class="form-horizontal">
+                                <table id="tabelaDados" class="table table-condensed table-hover table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Plano</th>
+                                            <th>Tabela</th> 
+                                            <th>Ações</th>                                           
+                                        </tr>                                       
+                                    </tbody>
+                                    
+                                </table>
+                                <center>
+                                    <button class="btn btn-primary" onclick="Finalizar()" type="button">Finalizar Cadastro</button>
+                                    <button class="btn btn-primary" id="btNew" onclick="Novo()" type="button">Novo Convênio</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </center>
+
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/Telas/Convenio.js")   
+    @Scripts.Render("~/Scripts/funcoes.js")
+    @Scripts.Render("~/Scripts/jquery.mask.min.js")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+}

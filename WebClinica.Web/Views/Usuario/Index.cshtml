@@ -1,0 +1,28 @@
+﻿<br />
+<table id="gridDadosUsuario" class="table table-condensed table-hover table-striped">
+    <thead>
+        <tr>
+            <th data-column-id="DataCadastro" data-identifier="true"  data-type="date">Data Cadastro</th>
+            <th data-column-id="Email" data-identifier="true">Email</th>
+            <th data-column-id="Login" data-order="asc">Login</th>
+            <th data-column-id="Ativo" data-order="asc">Ativo?</th>
+            <th data-column-id="Bloqueado" data-order="asc">Bloqueado?</th>
+            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ação</th>
+        </tr>
+    </thead>
+</table>
+
+<center>
+    <p>
+      
+        <input type="button" id="btNovo" class="btn btn-primary" value="Cadastrar Novo Usuário" />
+</center>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Telas/Usuario/index.js")
+}
+
+
+
+

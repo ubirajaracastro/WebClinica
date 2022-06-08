@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "BuscaPaciente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #navBarSearchForm input[type=text] {
+        width: 900px !important;
+    }
+          
+    .ui-autocomplete {
+        position: absolute;
+        cursor: default;
+        background: #0094ff;
+        color: white;
+        font-size:smaller;
+    }
+
+    /* workarounds */
+    html .ui-autocomplete {
+        width: 1px;
+    }
+    
+</style>
+
+<br />
+<center>
+    <h2>Localizar Paciente</h2>
+    <form action="@Url.Action("IniciarAtendimento","Prontuario")" method="get" class="navbar-form" role="search" id="navBarSearchForm">
+        <div>
+            <input type="text" id="txtPaciente" name="txtPaciente "class="form-control" placeholder="Nome do Paciente">
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </div>
+        <br />
+
+        <div id="divBotaoAtendimento" class="form-actions" style="display:none">
+            <button class="btn btn-primary" id="btAtendimento" type="submit">Registrar Atendimento</button>
+        </div>
+
+        
+    </form>
+</center>
+
+<br /><br />
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/Telas/Paciente/buscaPaciente.js")
+
+}

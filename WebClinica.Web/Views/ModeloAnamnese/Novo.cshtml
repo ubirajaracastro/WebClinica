@@ -1,0 +1,140 @@
+﻿@model WebClinica.Web.Models.ModeloAnamneseViewModel
+
+@{
+    ViewBag.Title = "Novo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Modelos de Anamnese</a></li>
+    <li><a data-toggle="tab" href="#pergunta">Perguntas da Anamnese</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        @using (Ajax.BeginForm("Salvar", "ModeloAnamnese",
+                        new AjaxOptions
+                        {
+                            OnSuccess = "OnSuccessAnamnese",
+                            OnFailure = "exibirModalErro",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "POST"
+
+                        }))
+        {
+            @Html.AntiForgeryToken()
+            <center>
+                <div class="form-horizontal">
+                    <h4>Modelo de Anamnese</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.HiddenFor(model => model.ModeloId)
+
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        </div>
+                        <input type="hidden" id="hdModelo" value="@Model.ModeloId" />
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PadraodaClinica, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.PadraodaClinica)
+                                @Html.ValidationMessageFor(model => model.PadraodaClinica, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Perguntas da Anamnese</h4>
+                    <hr />
+                    <table>
+                        <tr></tr>
+                        @foreach (var item in Model.Perguntas)
+                        {
+                            @Html.Partial("_PerguntasAnamnese", item);
+
+                        }
+                    </table>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn">Cancelar</button>
+                    </div>
+                </div>
+            </center>
+
+            <div id="myModal" class="modal fade" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Web Clínica</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="divMsg"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+    <div id="pergunta" class="tab-pane fade">
+
+        <table id="gridDadosPergunta" class="table table-condensed table-hover table-striped">
+            <thead>
+                <tr>
+                    <th data-column-id="PerguntaId" data-identifier="true" data-type="numeric">Código</th>
+                    <th data-column-id="Descricao" data-order="asc">Pergunta</th>
+                    <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ação</th>
+                </tr>
+            </thead>
+        </table>
+
+        <center>
+            @*<a id="ADDEmployee" href="..\Pergunta\Novo">Cadastrar Nova Pergunta</a></b>*@
+            <button id="btn-create" class="btn btn-primary" type="button">Cadastrar Nova Pergunta</button>
+
+            <div id="dialog-confirm" style="display: none">
+                <p>
+                    <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+                    Are you sure to delete ?
+                </p>
+            </div>
+            <div id="dialog-new" style="display: none">
+            </div>
+            <div id="dialog-view" style="display: none">
+            </div>
+        </center>
+
+        @*<button class="ui-state-default ui-corner-all btn-create">
+                <span class="ui-icon ui-icon-plus" />
+            </button>*@
+
+        <div class="modal" id="modal">
+
+        </div>
+
+    </div>
+ </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/Telas/Anamnese/anamnese.js")    
+    @Scripts.Render("~/Scripts/Telas/Pergunta/pergunta.js")
+    @Scripts.Render("~/Scripts/json.js")
+    
+}
+
+
+

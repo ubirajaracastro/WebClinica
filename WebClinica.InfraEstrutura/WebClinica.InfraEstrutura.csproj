@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6FE47FC3-00F7-4119-AFDE-ABA1EF058C91}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebClinica.InfraEstrutura</RootNamespace>
+    <AssemblyName>WebClinica.InfraEstrutura</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Map\AgendamentoMap.cs" />
+    <Compile Include="Data\Map\AsoFichaClinicaMap.cs" />
+    <Compile Include="Data\Map\AsoMap.cs" />
+    <Compile Include="Data\Map\AtendimentoMap.cs" />
+    <Compile Include="Data\Map\AtestadoMap.cs" />
+    <Compile Include="Data\Map\BancoMap.cs" />
+    <Compile Include="Data\Map\CategoriaCentroCustoMap.cs" />
+    <Compile Include="Data\Map\CentroCustoMap.cs" />
+    <Compile Include="Data\Map\CidadeMap.cs" />
+    <Compile Include="Data\Map\CIDMap.cs" />
+    <Compile Include="Data\Map\ClinicaMap.cs" />
+    <Compile Include="Data\Map\ComissaoMap.cs" />
+    <Compile Include="Data\Map\ConfiguracaoClinicaMap.cs" />
+    <Compile Include="Data\Map\ConfiguracaoFinanceiroMap.cs" />
+    <Compile Include="Data\Map\ContaCorrenteMap.cs" />
+    <Compile Include="Data\Map\ConvenioMap.cs" />
+    <Compile Include="Data\Map\ConvenioPlanoMap.cs" />
+    <Compile Include="Data\Map\GuiaMap.cs" />
+    <Compile Include="Data\Map\PadraoTISS\DescricaoTabelasTUSSMap.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela18Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela19Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela20Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela22Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela23Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela24Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela25Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela26Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela27Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela28Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela29Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela30Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela31Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela32Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela33Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela34Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela35Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela36Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela37Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela38Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela39Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela40Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela41Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela42Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela43Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela44Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela45Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela46Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela47Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela48Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela49Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela50Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela51Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela52Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela53Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela54Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela55Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela56Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela57Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela58Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela59Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela60Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela61Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela62Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela63Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\Tabela64Map.cs" />
+    <Compile Include="Data\Map\PadraoTISS\TipoGuiaMap.cs" />
+    <Compile Include="Data\Map\ProntuarioProcedimentoMap.cs" />
+    <Compile Include="Data\Map\ProntuarioRespostaAnamneseMap.cs" />
+    <Compile Include="Data\Map\TabelaDerivadaCobrancaProcedimentoItemMap.cs" />
+    <Compile Include="Data\Map\ConvenioProfissionalMap.cs" />
+    <Compile Include="Data\Map\DescritivoTabelasPlanoMap.cs" />
+    <Compile Include="Data\Map\EscalaAtendimentoProfissionalDiaSemanaMap.cs" />
+    <Compile Include="Data\Map\EscalaAtendimentoProfissionalMap.cs" />
+    <Compile Include="Data\Map\EscolaridadeMap.cs" />
+    <Compile Include="Data\Map\EstadoMap.cs" />
+    <Compile Include="Data\Map\ExameComplementarPCMSOMap.cs" />
+    <Compile Include="Data\Map\ExameFisicoMap.cs" />
+    <Compile Include="Data\Map\FatorSanguineoMap.cs" />
+    <Compile Include="Data\Map\FaturaMap.cs" />
+    <Compile Include="Data\Map\FormaPagamentoMap.cs" />
+    <Compile Include="Data\Map\FornecedorMap.cs" />
+    <Compile Include="Data\Map\GrupoProdutoMap.cs" />
+    <Compile Include="Data\Map\ModeloAnamneseMap.cs" />
+    <Compile Include="Data\Map\ModeloPerguntaMap.cs" />
+    <Compile Include="Data\Map\MovimentacaoEstoqueMap.cs" />
+    <Compile Include="Data\Map\OrcamentoMap.cs" />
+    <Compile Include="Data\Map\PacienteDadoComplementarMap.cs" />
+    <Compile Include="Data\Map\PacienteMap.cs" />
+    <Compile Include="Data\Map\PaisMap.cs" />
+    <Compile Include="Data\Map\ParcelamentoTituloMap.cs" />
+    <Compile Include="Data\Map\PerfilMap.cs" />
+    <Compile Include="Data\Map\PerguntasAnamneseMap.cs" />
+    <Compile Include="Data\Map\PorteAnestesicoMap.cs" />
+    <Compile Include="Data\Map\PorteProcedimentoMap.cs" />
+    <Compile Include="Data\Map\ProcedimentoCobrancaMap.cs" />
+    <Compile Include="Data\Map\ProcedimentoMap.cs" />
+    <Compile Include="Data\Map\ProdutoMap.cs" />
+    <Compile Include="Data\Map\ProfissionalMap.cs" />
+    <Compile Include="Data\Map\RespostaPerguntaAnamneseMap.cs" />
+    <Compile Include="Data\Map\RiscoOcupacionalMap.cs" />
+    <Compile Include="Data\Map\SolicitacaoExameMap.cs" />
+    <Compile Include="Data\Map\StatusAgendamentoMap.cs" />
+    <Compile Include="Data\Map\TabelaCBHPMMap.cs" />
+    <Compile Include="Data\Map\TabelaDerivadaCobrancaProcedimentoMap.cs" />
+    <Compile Include="Data\Map\TabelaNormativaUSSMap.cs" />
+    <Compile Include="Data\Map\TipodeConsultaMap.cs" />
+    <Compile Include="Data\Map\TipoMovimentoMap.cs" />
+    <Compile Include="Data\Map\TituloMap.cs" />
+    <Compile Include="Data\Map\UnidadeMedidaMap.cs" />
+    <Compile Include="Data\Map\UsuarioMap.cs" />
+    <Compile Include="Data\Repositorios\EntityDatabaseTransaction.cs" />
+    <Compile Include="Data\Repositorios\RepositorioBase.cs" />
+    <Compile Include="Data\Repositorios\UnitOfWork.cs" />
+    <Compile Include="Data\WebClinicaDataContext.cs" />
+    <Compile Include="Data\WebClinicaInitializer.cs" />
+    <Compile Include="Migrations\201703100052222_Convenio.cs" />
+    <Compile Include="Migrations\201703100052222_Convenio.Designer.cs">
+      <DependentUpon>201703100052222_Convenio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703131716496_ConfigComissao.cs" />
+    <Compile Include="Migrations\201703131716496_ConfigComissao.Designer.cs">
+      <DependentUpon>201703131716496_ConfigComissao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703151603102_RelationComissao.cs" />
+    <Compile Include="Migrations\201703151603102_RelationComissao.Designer.cs">
+      <DependentUpon>201703151603102_RelationComissao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703161443125_CorrecaoTipoCampoTabelaModeloAnamnese.cs" />
+    <Compile Include="Migrations\201703161443125_CorrecaoTipoCampoTabelaModeloAnamnese.Designer.cs">
+      <DependentUpon>201703161443125_CorrecaoTipoCampoTabelaModeloAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703161714430_ModeloAnamnese.cs" />
+    <Compile Include="Migrations\201703161714430_ModeloAnamnese.Designer.cs">
+      <DependentUpon>201703161714430_ModeloAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703161742137_NavigationPropertiesModeloAnamnesexPerguntas.cs" />
+    <Compile Include="Migrations\201703161742137_NavigationPropertiesModeloAnamnesexPerguntas.Designer.cs">
+      <DependentUpon>201703161742137_NavigationPropertiesModeloAnamnesexPerguntas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703161907463_AjusteModelagemAnamnese.cs" />
+    <Compile Include="Migrations\201703161907463_AjusteModelagemAnamnese.Designer.cs">
+      <DependentUpon>201703161907463_AjusteModelagemAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703162115555_AjusteModelagemAnamnese2.cs" />
+    <Compile Include="Migrations\201703162115555_AjusteModelagemAnamnese2.Designer.cs">
+      <DependentUpon>201703162115555_AjusteModelagemAnamnese2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703170201024_AjustesModeloAnamnese.cs" />
+    <Compile Include="Migrations\201703170201024_AjustesModeloAnamnese.Designer.cs">
+      <DependentUpon>201703170201024_AjustesModeloAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703170232510_CorrecaoModelagemAnamnese.cs" />
+    <Compile Include="Migrations\201703170232510_CorrecaoModelagemAnamnese.Designer.cs">
+      <DependentUpon>201703170232510_CorrecaoModelagemAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703200437439_ModeloPerguntaAnamnese.cs" />
+    <Compile Include="Migrations\201703200437439_ModeloPerguntaAnamnese.Designer.cs">
+      <DependentUpon>201703200437439_ModeloPerguntaAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703200459076_MudancaNomeColunas.cs" />
+    <Compile Include="Migrations\201703200459076_MudancaNomeColunas.Designer.cs">
+      <DependentUpon>201703200459076_MudancaNomeColunas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703201753007_CorrecaoModeloFisicoAnamnese.cs" />
+    <Compile Include="Migrations\201703201753007_CorrecaoModeloFisicoAnamnese.Designer.cs">
+      <DependentUpon>201703201753007_CorrecaoModeloFisicoAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703201841583_RenameTabelaAssociativaModeloAnamnese.cs" />
+    <Compile Include="Migrations\201703201841583_RenameTabelaAssociativaModeloAnamnese.Designer.cs">
+      <DependentUpon>201703201841583_RenameTabelaAssociativaModeloAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703210409265_Ajuste.cs" />
+    <Compile Include="Migrations\201703210409265_Ajuste.Designer.cs">
+      <DependentUpon>201703210409265_Ajuste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703211534244_ModelagemAnamneseAjustes.cs" />
+    <Compile Include="Migrations\201703211534244_ModelagemAnamneseAjustes.Designer.cs">
+      <DependentUpon>201703211534244_ModelagemAnamneseAjustes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703211653388_RetirarIndiceTabelaAssociativaModeloPergunta.cs" />
+    <Compile Include="Migrations\201703211653388_RetirarIndiceTabelaAssociativaModeloPergunta.Designer.cs">
+      <DependentUpon>201703211653388_RetirarIndiceTabelaAssociativaModeloPergunta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703211820539_RetiradoUmPMuitosPerguntas.cs" />
+    <Compile Include="Migrations\201703211820539_RetiradoUmPMuitosPerguntas.Designer.cs">
+      <DependentUpon>201703211820539_RetiradoUmPMuitosPerguntas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703211834593_teste.cs" />
+    <Compile Include="Migrations\201703211834593_teste.Designer.cs">
+      <DependentUpon>201703211834593_teste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703211845125_SaiListaPerguntasEntidadeModelo.cs" />
+    <Compile Include="Migrations\201703211845125_SaiListaPerguntasEntidadeModelo.Designer.cs">
+      <DependentUpon>201703211845125_SaiListaPerguntasEntidadeModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703220217377_CampoAtivoModeloAnamnese.cs" />
+    <Compile Include="Migrations\201703220217377_CampoAtivoModeloAnamnese.Designer.cs">
+      <DependentUpon>201703220217377_CampoAtivoModeloAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703231851029_AjusteEntidadeRespostaPerguntaAnamnese.cs" />
+    <Compile Include="Migrations\201703231851029_AjusteEntidadeRespostaPerguntaAnamnese.Designer.cs">
+      <DependentUpon>201703231851029_AjusteEntidadeRespostaPerguntaAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703231854181_AjusteEntidadeRespostaPerguntaAnamnese2.cs" />
+    <Compile Include="Migrations\201703231854181_AjusteEntidadeRespostaPerguntaAnamnese2.Designer.cs">
+      <DependentUpon>201703231854181_AjusteEntidadeRespostaPerguntaAnamnese2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703232129345_ConvencaoDeleteCascateRespostas.cs" />
+    <Compile Include="Migrations\201703232129345_ConvencaoDeleteCascateRespostas.Designer.cs">
+      <DependentUpon>201703232129345_ConvencaoDeleteCascateRespostas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703250059266_FornecedorClinica.cs" />
+    <Compile Include="Migrations\201703250059266_FornecedorClinica.Designer.cs">
+      <DependentUpon>201703250059266_FornecedorClinica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703270141560_EntidadeUsuario.cs" />
+    <Compile Include="Migrations\201703270141560_EntidadeUsuario.Designer.cs">
+      <DependentUpon>201703270141560_EntidadeUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703272126385_AjustesModeloPaciente.cs" />
+    <Compile Include="Migrations\201703272126385_AjustesModeloPaciente.Designer.cs">
+      <DependentUpon>201703272126385_AjustesModeloPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703272142260_AjusteModeloPaciente2.cs" />
+    <Compile Include="Migrations\201703272142260_AjusteModeloPaciente2.Designer.cs">
+      <DependentUpon>201703272142260_AjusteModeloPaciente2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703282103497_ModificacoesModelo.cs" />
+    <Compile Include="Migrations\201703282103497_ModificacoesModelo.Designer.cs">
+      <DependentUpon>201703282103497_ModificacoesModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703301755500_AlteracosEntidadePaciente.cs" />
+    <Compile Include="Migrations\201703301755500_AlteracosEntidadePaciente.Designer.cs">
+      <DependentUpon>201703301755500_AlteracosEntidadePaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703302246061_AlteracoesEntidadePaciente2.cs" />
+    <Compile Include="Migrations\201703302246061_AlteracoesEntidadePaciente2.Designer.cs">
+      <DependentUpon>201703302246061_AlteracoesEntidadePaciente2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703310159358_AlteracaoEntidadePaciente3.cs" />
+    <Compile Include="Migrations\201703310159358_AlteracaoEntidadePaciente3.Designer.cs">
+      <DependentUpon>201703310159358_AlteracaoEntidadePaciente3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311352537_EntidadePacienteAlteracaoObrigatoriedade.cs" />
+    <Compile Include="Migrations\201703311352537_EntidadePacienteAlteracaoObrigatoriedade.Designer.cs">
+      <DependentUpon>201703311352537_EntidadePacienteAlteracaoObrigatoriedade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311758206_AlteracaoColunaIdentityPacienteDadoComplementar.cs" />
+    <Compile Include="Migrations\201703311758206_AlteracaoColunaIdentityPacienteDadoComplementar.Designer.cs">
+      <DependentUpon>201703311758206_AlteracaoColunaIdentityPacienteDadoComplementar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311911551_EntiadePacienteAlterado.cs" />
+    <Compile Include="Migrations\201703311911551_EntiadePacienteAlterado.Designer.cs">
+      <DependentUpon>201703311911551_EntiadePacienteAlterado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703312008206_EntidadePaciente.cs" />
+    <Compile Include="Migrations\201703312008206_EntidadePaciente.Designer.cs">
+      <DependentUpon>201703312008206_EntidadePaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704071954441_ReDesenhoModeloConvenio.cs" />
+    <Compile Include="Migrations\201704071954441_ReDesenhoModeloConvenio.Designer.cs">
+      <DependentUpon>201704071954441_ReDesenhoModeloConvenio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704072011326_TabelaCHBPMPermiturNulos.cs" />
+    <Compile Include="Migrations\201704072011326_TabelaCHBPMPermiturNulos.Designer.cs">
+      <DependentUpon>201704072011326_TabelaCHBPMPermiturNulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704072020463_ReDesenhoModeloConvenioCamposNulos.cs" />
+    <Compile Include="Migrations\201704072020463_ReDesenhoModeloConvenioCamposNulos.Designer.cs">
+      <DependentUpon>201704072020463_ReDesenhoModeloConvenioCamposNulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704072123554_NovasEntidadesPorteeProcedimentoMedico.cs" />
+    <Compile Include="Migrations\201704072123554_NovasEntidadesPorteeProcedimentoMedico.Designer.cs">
+      <DependentUpon>201704072123554_NovasEntidadesPorteeProcedimentoMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704082008447_EntidadeEnumeradoraTabelasProcedimento.cs" />
+    <Compile Include="Migrations\201704082008447_EntidadeEnumeradoraTabelasProcedimento.Designer.cs">
+      <DependentUpon>201704082008447_EntidadeEnumeradoraTabelasProcedimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704090150414_AjusteEntidadeTabelaProcedimentoDerivada.cs" />
+    <Compile Include="Migrations\201704090150414_AjusteEntidadeTabelaProcedimentoDerivada.Designer.cs">
+      <DependentUpon>201704090150414_AjusteEntidadeTabelaProcedimentoDerivada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704091646202_AjusteEntidadeConvenioPlano.cs" />
+    <Compile Include="Migrations\201704091646202_AjusteEntidadeConvenioPlano.Designer.cs">
+      <DependentUpon>201704091646202_AjusteEntidadeConvenioPlano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704110056112_EntidadeTabelaDerivadaNovosCampos.cs" />
+    <Compile Include="Migrations\201704110056112_EntidadeTabelaDerivadaNovosCampos.Designer.cs">
+      <DependentUpon>201704110056112_EntidadeTabelaDerivadaNovosCampos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704112322524_CriacaoEntidadePaiTabelaDerivacao.cs" />
+    <Compile Include="Migrations\201704112322524_CriacaoEntidadePaiTabelaDerivacao.Designer.cs">
+      <DependentUpon>201704112322524_CriacaoEntidadePaiTabelaDerivacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704172038456_ModelagemTerminologiaTISS.cs" />
+    <Compile Include="Migrations\201704172038456_ModelagemTerminologiaTISS.Designer.cs">
+      <DependentUpon>201704172038456_ModelagemTerminologiaTISS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704172049138_ModelagemTerminologiaTISS_TabelaDescricao.cs" />
+    <Compile Include="Migrations\201704172049138_ModelagemTerminologiaTISS_TabelaDescricao.Designer.cs">
+      <DependentUpon>201704172049138_ModelagemTerminologiaTISS_TabelaDescricao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704180258410_MudancaParausarTabelaCBODATISS.cs" />
+    <Compile Include="Migrations\201704180258410_MudancaParausarTabelaCBODATISS.Designer.cs">
+      <DependentUpon>201704180258410_MudancaParausarTabelaCBODATISS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704181701351_RemoveColunaUFRegistroProfissional.cs" />
+    <Compile Include="Migrations\201704181701351_RemoveColunaUFRegistroProfissional.Designer.cs">
+      <DependentUpon>201704181701351_RemoveColunaUFRegistroProfissional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704211755407_AjusteEntidadeProntuario.cs" />
+    <Compile Include="Migrations\201704211755407_AjusteEntidadeProntuario.Designer.cs">
+      <DependentUpon>201704211755407_AjusteEntidadeProntuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704211820584_RemoveEntidade.cs" />
+    <Compile Include="Migrations\201704211820584_RemoveEntidade.Designer.cs">
+      <DependentUpon>201704211820584_RemoveEntidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704282337570_TabelaCID.cs" />
+    <Compile Include="Migrations\201704282337570_TabelaCID.Designer.cs">
+      <DependentUpon>201704282337570_TabelaCID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705011931459_AjusteModeloPronturario.cs" />
+    <Compile Include="Migrations\201705011931459_AjusteModeloPronturario.Designer.cs">
+      <DependentUpon>201705011931459_AjusteModeloPronturario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705012118576_AlteracoesModelo.cs" />
+    <Compile Include="Migrations\201705012118576_AlteracoesModelo.Designer.cs">
+      <DependentUpon>201705012118576_AlteracoesModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705020139401_MudancaTipoEntidadeProntuarioRespostaPerguntaAnamnese.cs" />
+    <Compile Include="Migrations\201705020139401_MudancaTipoEntidadeProntuarioRespostaPerguntaAnamnese.Designer.cs">
+      <DependentUpon>201705020139401_MudancaTipoEntidadeProntuarioRespostaPerguntaAnamnese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705030337386_AjusteModeloOffProntuario.cs" />
+    <Compile Include="Migrations\201705030337386_AjusteModeloOffProntuario.Designer.cs">
+      <DependentUpon>201705030337386_AjusteModeloOffProntuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705030341450_AjusteModeloOffProntuario2.cs" />
+    <Compile Include="Migrations\201705030341450_AjusteModeloOffProntuario2.Designer.cs">
+      <DependentUpon>201705030341450_AjusteModeloOffProntuario2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705032048325_AjstesTiposExameFisico.cs" />
+    <Compile Include="Migrations\201705032048325_AjstesTiposExameFisico.Designer.cs">
+      <DependentUpon>201705032048325_AjstesTiposExameFisico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081655099_CorrecaoModelagemProntuario.cs" />
+    <Compile Include="Migrations\201705081655099_CorrecaoModelagemProntuario.Designer.cs">
+      <DependentUpon>201705081655099_CorrecaoModelagemProntuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081822510_CorrecaoModelagemProntuarioRemoveColunas.cs" />
+    <Compile Include="Migrations\201705081822510_CorrecaoModelagemProntuarioRemoveColunas.Designer.cs">
+      <DependentUpon>201705081822510_CorrecaoModelagemProntuarioRemoveColunas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebClinica.Dominio\WebClinica.Dominio.csproj">
+      <Project>{54062986-a0ab-4603-8f9b-67f74ca55e5b}</Project>
+      <Name>WebClinica.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703100052222_Convenio.resx">
+      <DependentUpon>201703100052222_Convenio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703131716496_ConfigComissao.resx">
+      <DependentUpon>201703131716496_ConfigComissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151603102_RelationComissao.resx">
+      <DependentUpon>201703151603102_RelationComissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703161443125_CorrecaoTipoCampoTabelaModeloAnamnese.resx">
+      <DependentUpon>201703161443125_CorrecaoTipoCampoTabelaModeloAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703161714430_ModeloAnamnese.resx">
+      <DependentUpon>201703161714430_ModeloAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703161742137_NavigationPropertiesModeloAnamnesexPerguntas.resx">
+      <DependentUpon>201703161742137_NavigationPropertiesModeloAnamnesexPerguntas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703161907463_AjusteModelagemAnamnese.resx">
+      <DependentUpon>201703161907463_AjusteModelagemAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703162115555_AjusteModelagemAnamnese2.resx">
+      <DependentUpon>201703162115555_AjusteModelagemAnamnese2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703170201024_AjustesModeloAnamnese.resx">
+      <DependentUpon>201703170201024_AjustesModeloAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703170232510_CorrecaoModelagemAnamnese.resx">
+      <DependentUpon>201703170232510_CorrecaoModelagemAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703200437439_ModeloPerguntaAnamnese.resx">
+      <DependentUpon>201703200437439_ModeloPerguntaAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703200459076_MudancaNomeColunas.resx">
+      <DependentUpon>201703200459076_MudancaNomeColunas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703201753007_CorrecaoModeloFisicoAnamnese.resx">
+      <DependentUpon>201703201753007_CorrecaoModeloFisicoAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703201841583_RenameTabelaAssociativaModeloAnamnese.resx">
+      <DependentUpon>201703201841583_RenameTabelaAssociativaModeloAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703210409265_Ajuste.resx">
+      <DependentUpon>201703210409265_Ajuste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211534244_ModelagemAnamneseAjustes.resx">
+      <DependentUpon>201703211534244_ModelagemAnamneseAjustes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211653388_RetirarIndiceTabelaAssociativaModeloPergunta.resx">
+      <DependentUpon>201703211653388_RetirarIndiceTabelaAssociativaModeloPergunta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211820539_RetiradoUmPMuitosPerguntas.resx">
+      <DependentUpon>201703211820539_RetiradoUmPMuitosPerguntas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211834593_teste.resx">
+      <DependentUpon>201703211834593_teste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211845125_SaiListaPerguntasEntidadeModelo.resx">
+      <DependentUpon>201703211845125_SaiListaPerguntasEntidadeModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703220217377_CampoAtivoModeloAnamnese.resx">
+      <DependentUpon>201703220217377_CampoAtivoModeloAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703231851029_AjusteEntidadeRespostaPerguntaAnamnese.resx">
+      <DependentUpon>201703231851029_AjusteEntidadeRespostaPerguntaAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703231854181_AjusteEntidadeRespostaPerguntaAnamnese2.resx">
+      <DependentUpon>201703231854181_AjusteEntidadeRespostaPerguntaAnamnese2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703232129345_ConvencaoDeleteCascateRespostas.resx">
+      <DependentUpon>201703232129345_ConvencaoDeleteCascateRespostas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703250059266_FornecedorClinica.resx">
+      <DependentUpon>201703250059266_FornecedorClinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703270141560_EntidadeUsuario.resx">
+      <DependentUpon>201703270141560_EntidadeUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272126385_AjustesModeloPaciente.resx">
+      <DependentUpon>201703272126385_AjustesModeloPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272142260_AjusteModeloPaciente2.resx">
+      <DependentUpon>201703272142260_AjusteModeloPaciente2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703282103497_ModificacoesModelo.resx">
+      <DependentUpon>201703282103497_ModificacoesModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703301755500_AlteracosEntidadePaciente.resx">
+      <DependentUpon>201703301755500_AlteracosEntidadePaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703302246061_AlteracoesEntidadePaciente2.resx">
+      <DependentUpon>201703302246061_AlteracoesEntidadePaciente2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703310159358_AlteracaoEntidadePaciente3.resx">
+      <DependentUpon>201703310159358_AlteracaoEntidadePaciente3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311352537_EntidadePacienteAlteracaoObrigatoriedade.resx">
+      <DependentUpon>201703311352537_EntidadePacienteAlteracaoObrigatoriedade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311758206_AlteracaoColunaIdentityPacienteDadoComplementar.resx">
+      <DependentUpon>201703311758206_AlteracaoColunaIdentityPacienteDadoComplementar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311911551_EntiadePacienteAlterado.resx">
+      <DependentUpon>201703311911551_EntiadePacienteAlterado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703312008206_EntidadePaciente.resx">
+      <DependentUpon>201703312008206_EntidadePaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704071954441_ReDesenhoModeloConvenio.resx">
+      <DependentUpon>201704071954441_ReDesenhoModeloConvenio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704072011326_TabelaCHBPMPermiturNulos.resx">
+      <DependentUpon>201704072011326_TabelaCHBPMPermiturNulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704072020463_ReDesenhoModeloConvenioCamposNulos.resx">
+      <DependentUpon>201704072020463_ReDesenhoModeloConvenioCamposNulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704072123554_NovasEntidadesPorteeProcedimentoMedico.resx">
+      <DependentUpon>201704072123554_NovasEntidadesPorteeProcedimentoMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704082008447_EntidadeEnumeradoraTabelasProcedimento.resx">
+      <DependentUpon>201704082008447_EntidadeEnumeradoraTabelasProcedimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704090150414_AjusteEntidadeTabelaProcedimentoDerivada.resx">
+      <DependentUpon>201704090150414_AjusteEntidadeTabelaProcedimentoDerivada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704091646202_AjusteEntidadeConvenioPlano.resx">
+      <DependentUpon>201704091646202_AjusteEntidadeConvenioPlano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704110056112_EntidadeTabelaDerivadaNovosCampos.resx">
+      <DependentUpon>201704110056112_EntidadeTabelaDerivadaNovosCampos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704112322524_CriacaoEntidadePaiTabelaDerivacao.resx">
+      <DependentUpon>201704112322524_CriacaoEntidadePaiTabelaDerivacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704172038456_ModelagemTerminologiaTISS.resx">
+      <DependentUpon>201704172038456_ModelagemTerminologiaTISS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704172049138_ModelagemTerminologiaTISS_TabelaDescricao.resx">
+      <DependentUpon>201704172049138_ModelagemTerminologiaTISS_TabelaDescricao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704180258410_MudancaParausarTabelaCBODATISS.resx">
+      <DependentUpon>201704180258410_MudancaParausarTabelaCBODATISS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704181701351_RemoveColunaUFRegistroProfissional.resx">
+      <DependentUpon>201704181701351_RemoveColunaUFRegistroProfissional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704211755407_AjusteEntidadeProntuario.resx">
+      <DependentUpon>201704211755407_AjusteEntidadeProntuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704211820584_RemoveEntidade.resx">
+      <DependentUpon>201704211820584_RemoveEntidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704282337570_TabelaCID.resx">
+      <DependentUpon>201704282337570_TabelaCID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705011931459_AjusteModeloPronturario.resx">
+      <DependentUpon>201705011931459_AjusteModeloPronturario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705012118576_AlteracoesModelo.resx">
+      <DependentUpon>201705012118576_AlteracoesModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705020139401_MudancaTipoEntidadeProntuarioRespostaPerguntaAnamnese.resx">
+      <DependentUpon>201705020139401_MudancaTipoEntidadeProntuarioRespostaPerguntaAnamnese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705030337386_AjusteModeloOffProntuario.resx">
+      <DependentUpon>201705030337386_AjusteModeloOffProntuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705030341450_AjusteModeloOffProntuario2.resx">
+      <DependentUpon>201705030341450_AjusteModeloOffProntuario2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705032048325_AjstesTiposExameFisico.resx">
+      <DependentUpon>201705032048325_AjstesTiposExameFisico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081655099_CorrecaoModelagemProntuario.resx">
+      <DependentUpon>201705081655099_CorrecaoModelagemProntuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081822510_CorrecaoModelagemProntuarioRemoveColunas.resx">
+      <DependentUpon>201705081822510_CorrecaoModelagemProntuarioRemoveColunas.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

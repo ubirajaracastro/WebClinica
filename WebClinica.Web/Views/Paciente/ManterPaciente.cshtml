@@ -1,0 +1,466 @@
+﻿@model WebClinica.Web.Models.PacienteViewModel
+
+@{
+    if (Model!=null && Model.PacienteId > 0)
+    {
+        <input id="nomeCidade" type="hidden" value="@ViewBag.CidadeAtual" />
+        <input id="codigoCidade" type="hidden" value="@ViewBag.CodigoCidadeAtual" />
+        <input id="codigoPlano" type="hidden" value="@ViewBag.CodigoPlano" />
+    }
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Tabs functionality</title>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+      
+    <style>
+        #tabs-1 {
+            font-size: 13px;
+        }
+
+        .ui-widget-header {
+            background: #09448f;
+            border: 1px solid #b9cd6d;            
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <br />
+    <center>
+                      
+        @using (Ajax.BeginForm("Salvar", "Paciente",
+                                new AjaxOptions
+                                {
+                                    OnSuccess = "OnSuccess",
+                                    OnFailure = "OnErro",
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "POST"
+
+                                }))
+
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <h4>Manutenção - Dados do Paciente</h4><br />
+            <div id="tabs-1">
+                <ul>
+                    <li onclick="obterTabClicada();"><a href="#tabs-2">Perfil</a></li>
+                    <li onclick="obterTabClicada();"><a href="#tabs-3">Informações Básicas</a></li>
+                    <li onclick="obterTabClicada();"><a href="#tabs-4">Dados Complementares</a></li>
+                    <li onclick="obterTabClicada();"><a href="#tabs-6">Convênio</a></li>
+                    <li onclick="obterTabClicada();"><a href="#tabs-7">Agendamentos</a></li>
+                    <li onclick="obterTabClicada();"><a href="#tabs-8">Prontuários</a></li>
+                    <li onclick="obterTabClicada();"><a href="#tabs-9">Extrato Financeiro</a></li>                   
+                    <li onclick="obterTabClicada();"><a href="#tabs-11">Atestados</a></li>
+                    <li onclick="obterTabClicada();"><a href="#tabs-12">Solicitações de Exame</a></li>
+                    <li onclick="obterTabClicada();"><a href="#tabs-13">Orçamentos</a></li>                    
+                </ul>
+                <div id="tabs-2">
+                    <p>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <img src="~/Content/themes/base/images/paciente.jpg" />
+                            </div>
+                             
+                            <div class="panel-heading">@Html.DisplayFor(model => model.NomeCompleto)</div>
+                            <div class="panel-body">
+                                Sexo: @Html.DisplayFor(model => model.Sexo)
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Informações de Contato</h3>
+                            </div>
+                            <div class="panel-body">
+                                Email:@Html.DisplayFor(model => model.Email)
+                            </div>
+                            <div class="panel-body">
+                                Telefone:@Html.DisplayFor(model => model.TelefoneCelular)
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Consultas/Procedimentos</h3>
+                            </div>
+                            <div class="panel-body">
+                                Consultas Realizadas no mês:02
+                            </div>
+                            
+                        </div>
+                    </p>
+                </div>
+                <div id="tabs-3">
+                    <br /><br /><br />
+
+                    @Html.HiddenFor(model => model.CidadeID)
+                    @Html.HiddenFor(model => model.PacienteId)
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.NomeCompleto, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.NomeCompleto, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NomeCompleto)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DataNascimento)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2 dropdown">
+                                @Html.EnumDropDownListFor(model=>model.Sexo, "Selecione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Sexo)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CPF)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.Endereco, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.Complemento, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.EstadoID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.EstadoID, (SelectList)ViewBag.UF, "Selecione", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EstadoID)
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        @Html.Label("Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            <select id="Cidade" class = "form-control" name="Cidade">
+                                <option value="">Selecione</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.TelefoneCelular, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.TelefoneCelular, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TelefoneCelular)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.TelefoneResidencial, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.TelefoneResidencial, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.TelefoneComercial, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.TelefoneComercial, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.Skype, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.Skype, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br /><br /><br />
+                <div id="tabs-4">
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DadosComplementares.RG, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.DadosComplementares.RG, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DadosComplementares.CNSSUS, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.DadosComplementares.CNSSUS, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DadosComplementares.FatorSanguineo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.DadosComplementares.FatorSanguineo, (SelectList)ViewBag.GrupoSanguineo, "Selecione", new { @class = "form-control" } )
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DadosComplementares.EstadoCivilId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-2">
+                            @Html.EnumDropDownListFor(m=>m.DadosComplementares.EstadoCivil,"Selecione",new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DadosComplementares.EtniaId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-2">
+                            @Html.EnumDropDownListFor(m => m.DadosComplementares.Etnia, "Selecione", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DadosComplementares.NomePai, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.DadosComplementares.NomePai, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DadosComplementares.NomeMae, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.DadosComplementares.NomeMae, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DadosComplementares.NomeConjugue, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.DadosComplementares.NomeConjugue, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DadosComplementares.Responsavel, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.DadosComplementares.Responsavel, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DadosComplementares.Indicacao, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.DadosComplementares.Indicacao, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @*@Html.Label("Data de Aniversário:")*@
+                            <div class="col-md-8">
+                                <div id="divDataAniversario"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.DadosComplementares.Hobby, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.DadosComplementares.Hobby, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DadosComplementares.EscolaridadeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.DadosComplementares.EscolaridadeId, (SelectList)ViewBag.Escolaridade, "Selecione", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    @*<div class="row form-group">
+                        @Html.LabelFor(model => model.DadosComplementares.ProfissaoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.DadosComplementares.ProfissaoId, (SelectList)ViewBag.Profissao, "Selecione", new { @class = "form-control" })
+                        </div>
+                    </div>*@
+
+                </div>
+                <br /><br /><br />
+                <div id="tabs-6">
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.ConvenioId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.ConvenioId, (SelectList)ViewBag.Convenio, "Selecione"
+                           , new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model=>model.ConvenioId)
+                        </div>
+                    </div>
+
+                    <div id="divPlano" style="display:none" class="row form-group">
+                        @Html.LabelFor(model => model.ConvenioPlanoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            <select id="ddlPlano" class="form-control" name="ddlPlano">
+                                <option value="0">Selecione</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DadosComplementares.TipoConvenioID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-2">
+                            @Html.EnumDropDownListFor(m => m.DadosComplementares.TipoConvenio, "Selecione", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DadosComplementares.TipoConvenioID)
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.NumeroCarteira, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.NumeroCarteira, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NumeroCarteira)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md8">
+                            @Html.LabelFor(model => model.ValidadeCarteira, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.ValidadeCarteira, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabs-7">
+                    Agendamentos
+                </div>
+
+                <div id="tabs-8">
+                    Prontuários
+                </div>
+
+                <div id="tabs-9">
+                    Extrato Financeiro
+                </div>                
+
+                <div id="tabs-11">
+                    Atestados
+                </div>
+
+                <div id="tabs-12">
+                    Solicitações de Exame
+                </div>
+
+                <div id="tabs-13">
+                    Orçamentos
+                </div>               
+
+            </div>
+
+            <br />
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="button" id="btVoltar" class="btn">Voltar</button>
+            </div>
+        }
+    </center>
+
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/funcoes.js")
+    @Scripts.Render("~/Scripts/Telas/Paciente/paciente.js")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")    
+
+}
+

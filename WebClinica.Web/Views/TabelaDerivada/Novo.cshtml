@@ -1,0 +1,133 @@
+﻿@model WebClinica.Web.Models.TabelaDerivadaCobrancaProcedimentoViewModel
+@{
+    ViewBag.Title = "Nova Tabela";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+   
+    .ui-autocomplete {
+        position: absolute;
+        cursor: default;
+        background: #0094ff;
+        color: white;
+        font-size:smaller;
+    }
+
+    /* workarounds */
+    html .ui-autocomplete {
+        width: 1px;
+    }
+    
+</style>
+@using (Html.BeginForm())
+
+{
+    @Html.AntiForgeryToken()
+
+    if (Model.TabelaDerivadaCobrancaProcedimentoID > 0)
+    {
+        <input type="hidden" id="hdCodigoTabela" value="@Model.TabelaDerivadaCobrancaProcedimentoID" />
+    }
+
+    <center>
+        <div class="form-horizontal">
+            <h4>Configuração/Derivação de Tabela - Base CBHPM</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeTabela, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.NomeTabela, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomeTabela, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeProcedimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.NomeProcedimento, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CodigoProcedimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.CodigoProcedimento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CodigoProcedimento, "", new { @class = "text-danger" })
+                </div>              
+            </div>         
+                      
+            <div class="form-group">
+                @Html.LabelFor(model => model.ValorUCO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.ValorUCO, new { htmlAttributes = new { @class = "form-control" } })
+                                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NovoValorAcordado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.NovoValorAcordado, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NovoValorAcordado, "", new { @class = "text-danger" })
+                    <br />                   
+                </div>
+                <button class="btn btn-primary" onclick="adicionarColuna()" id="btAdd" type="button">Adicionar Procedimento</button>
+                <button type="button" id="btNovaBusca" class="btn btn-primary">Nova Pesquisa</button>
+                <br />             
+              </div>
+            <div id="teste"></div>
+            <div id="resultado">
+                <table id="tabelaDados" class="table table-condensed table-hover table-striped">
+                    <tbody>
+
+                        <tr>
+                            <th>Código</th>
+                            <th>Valor UCO</th>
+                            <th>Valor Total</th>
+                            <th>Ações</th>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+
+
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        @*<tr>
+                        <td colspan="5" style="text-align: left;">
+                            <button class="btn btn-primary" onclick="adicionarColuna()" type="button">Adicionar Comissão</button>
+                        </td>
+                    </tr>*@
+                    </tfoot>
+                </table>
+            </div>
+
+            <br />
+            <div class="form-actions">
+                <button type="button" id="btSalvar" class="btn btn-primary">Salvar</button>
+                <button type="button" id="btCancelar" class="btn">Cancelar</button>
+            </div>
+        </div>
+
+        
+
+    </center>
+
+}
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/Scripts/funcoes.js")
+        @Scripts.Render("~/Scripts/json.js")
+        @Scripts.Render("~/Scripts/jquery.mask.min.js")
+        @Scripts.Render("~/Scripts/Telas/TabelaDerivada/tabelaDerivada.js")
+        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+        @Scripts.Render("~/bundles/validations_pt-br")
+    }
+

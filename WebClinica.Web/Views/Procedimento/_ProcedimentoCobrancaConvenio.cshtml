@@ -1,0 +1,49 @@
+﻿@using System.Linq;
+@model IList<WebClinica.Web.Models.ProcedimentoCobrancaConvenioViewModel>
+
+<table class="table table-condensed table-hover table-striped">
+    <tr>
+        <th>
+            Selecione
+        </th>
+
+        <th>
+            Nome do Convenio
+        </th>
+
+        <th>
+            Valor do Paciente
+        </th>
+
+
+        <th>
+            Valor do Convenio
+        </th>
+
+    </tr>      
+
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.CheckBoxFor(modelItem => Model[i].Ativo)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => Model[i].NomeConvenio)
+                @Html.HiddenFor(modelItem => Model[i].ConvenioId)
+            </td>
+            
+            <td>
+                @*@Html.TextBoxFor(modelItem => Model[i].ValorPaciente)*@   
+                @Html.TextBox("ValorPaciente" + i, null,new {@Value = Model[i].ValorPaciente})
+            </td>
+
+            <td>
+                @*@Html.TextBoxFor(modelItem => Model[i].ValorConvenio)*@
+                @Html.TextBox("ValorConvenio" + i, null,new {@Value = Model[i].ValorConvenio})
+            </td>
+
+        </tr>
+    }
+
+</table>

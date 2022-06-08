@@ -1,0 +1,20 @@
+﻿@using HtmlHelpers.BeginCollectionItem;
+@model WebClinica.Web.Models.ModeloAnamneseViewModel
+
+<tr>
+    @using (Html.BeginCollectionItem("Modelos"))
+    {
+        <td>
+            @Html.CheckBoxFor(model => model.Marcado)
+            @Html.HiddenFor(model => model.ModeloId)
+        </td>
+
+        <td>
+            &nbsp; @Html.DisplayTextFor(model => model.Nome)
+            @Html.HiddenFor(model => model.Nome)
+
+        </td>
+
+    }
+</tr>
+

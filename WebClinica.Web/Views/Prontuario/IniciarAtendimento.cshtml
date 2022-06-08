@@ -1,0 +1,386 @@
+﻿@model WebClinica.Web.Models.ProntuarioViewModel
+
+@{
+    ViewBag.Title = "IniciarAtendimento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .ui-autocomplete {
+        position: absolute;
+        cursor: default;
+        background: #0094ff;
+        color: white;
+        font-size: smaller;
+    }
+
+    /* workarounds */
+    html .ui-autocomplete {
+        width: 1px;
+    }
+
+    .progresso {
+        display: none;
+        /*position: fixed;
+        top: 360px;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -100px;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: white;
+        border: 1px solid black;
+        height: 20px;
+        width: 40px;*/
+    }
+</style>
+
+<center>
+
+    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapsedados" aria-expanded="true" aria-controls="collapsedados">
+        Clique aqui para obter dados do Paciente
+    </a><br />
+    <br />
+    <div id="collapsedados" class="list-group panel-collapse collapse in">
+        <a href="#" class="list-group-item active">
+            <p class="list-group-item-heading">
+                CPF do Paciente: @ViewBag.CPF - Paciente: @ViewBag.Paciente<br />
+                Data de Nascimento: @ViewBag.DataNascimento - Sexo: @ViewBag.Sexo<br />
+                Telefone: @ViewBag.Telefone - Email: @ViewBag.Email<br />
+                Responsável: @ViewBag.Responsavel - Indicado Por: @ViewBag.Indicacao<br />
+                Convênio: @ViewBag.Convenio<br /><br />
+
+                @if (ViewBag.QtdeAtendimentos == 0)
+                {
+                <div class="alert alert-info" role="alert">
+                    Este será o primeiro atendimento para o paciente @ViewBag.Paciente
+                </div>
+
+                }
+            </p>
+        </a>
+    </div>
+</center>
+
+@using (Ajax.BeginForm("IniciarAtendimento", "Prontuario",
+                                    new AjaxOptions
+                                    {
+                                        OnSuccess = "OnSuccessProntuario",
+                                        OnFailure = "OnErroProntuario",
+                                        InsertionMode = InsertionMode.Replace,
+                                        HttpMethod = "POST",
+                                        LoadingElementId= "divCarregando"
+
+                                    }))
+
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.Hidden("CodigoPaciente", (string)ViewBag.PacienteID)
+   
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Queixa Principal <span style="color:red">*</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.QueixaPrincipal, 8, 160, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.QueixaPrincipal, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Conduta <span style="color:red">*</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Conduta, 8, 160, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Conduta, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Anamnese
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <center>
+                        <div class="panel-body">
+                            @foreach (var item in Model.Perguntas)
+                            {
+                                @Html.Partial("_PerguntasdoModelo", item)
+                            }
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingHeight">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseHeight" aria-expanded="false" aria-controls="collapseSeven">
+                        Procedimentos
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseHeight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHeight">
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-md2">
+                            <center>
+                                <button type="button" class="btn btn-primary" id="add">Adicionar Procedimento</button>
+                            </center><br />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md10">
+                            <div class="form-horizontal">
+                                <table id="Products" class="table table-condensed table-hover table-striped">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Procedimentos)
+                                        {
+                                            @Html.Partial("_NovoProcedimento", item)
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Exame Fisíco
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                <div class="panel-body">
+
+                    <div class="row form-group">
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.Peso, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.Peso, new { htmlAttributes = new { @class = "form-control",@Value="0" } })
+                            </div>
+                            <div class="col-md-1">
+                                Kg
+                            </div>
+                        </div>
+
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.FrequenciaRespiratoria, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.FrequenciaRespiratoria, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                            </div>
+                            <div class="col-md-1">
+                                irpm
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.Altura, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.Altura, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                            </div>
+                            <div class="col-md-1">
+                                cm
+                            </div>
+                        </div>
+
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.FrequenciaCardiaca, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.FrequenciaCardiaca, new { htmlAttributes = new { @class = "form-control" , @Value = "0" } })
+                            </div>
+                            <div class="col-md-1">
+                                bpm
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.IMC, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.IMC, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                            </div>
+                        </div>
+
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.PressãoArterialsistotica, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.PressãoArterialsistotica, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                            </div>
+                            <div class="col-md-1">
+                                mmHg
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.Temperatura, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.Temperatura, new { htmlAttributes = new { @class = "form-control" , @Value = "0" } })
+                            </div>
+                            <div class="col-md-1">
+                                °C
+                            </div>
+                        </div>
+
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.PressãoArterialdiastolica, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.PressãoArterialdiastolica, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                            </div>
+                            <div class="col-md-1">
+                                mmHg
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md2">
+                            @Html.LabelFor(model => model.ExameFisico.Hemoglucoteste, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.ExameFisico.Hemoglucoteste, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                            </div>
+                            <div class="col-md-1">
+                                mg/dl
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Diagnóstico <span style="color:red">*</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-md10">
+                            @Html.LabelFor(model => model.DescricaoCID, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DescricaoCID, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DescricaoCID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingSix">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        Prescrição
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-md10">
+                            <center>
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.PrescricaoMedica, 8, 120, new { htmlAttributes = new { @class = "form-control", } })
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingSeven">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        Atestado
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-md10">
+                            <center>
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.Atestado.Texto, 8, 120, new { htmlAttributes = new { @class = "form-control", } })
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center>
+        <div class="form-actions">
+            <button type="submit" id="btSalvar" class="btn btn-primary">Salvar Prontuário</button>
+            <button type="button" id="btVoltar" class="btn">Cancelar</button>
+        </div>
+        <br />
+        <div id="divCarregando" class="progresso">
+            <img src="@Url.Content("~/Content/themes/base/images/carregando.gif")" />
+            <br />
+            Aguarde. Salvando prontuário...           
+        </div>
+
+    </center>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/funcoes.js")
+    @Scripts.Render("~/Scripts/Telas/Prontuario/prontuario.js")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+
+}
+
+

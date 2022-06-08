@@ -1,0 +1,142 @@
+﻿@model WebClinica.Web.Models.ComissaoViewModel
+
+@{
+    ViewBag.Title = "Novo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <center>
+        <div class="form-horizontal">
+            <h4>Parametrização de Comissão - Procedimentos/Profissional de Saúde</h4>
+            <hr />
+
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DescricaoComissao, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.DescricaoComissao, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DescricaoComissao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConvenioId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.DropDownListFor(model => model.ConvenioId, (SelectList)ViewBag.Convenios, "Selecione", new { htmlAttributes = new { @class = "dropdown" } })
+                    @Html.ValidationMessageFor(model => model.ConvenioId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProcedimentoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    <select id="ddlProcedimento" disabled name="ddlProcedimento" class=".dropdown">
+                        <option value="0">Selecione</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.ProcedimentoId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProfissionalId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    <select id="ddlProfissional" disabled name="ddlProfissional">
+                        <option value="">Selecione</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.ProfissionalId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ValorComissao, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.EditorFor(model => model.ValorComissao, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ValorComissao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ativo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(model => model.Ativo)
+
+                    </div>
+                </div>
+            </div>
+          
+            <br /><br /><br />
+
+            <div id="resultado" class="form-horizontal">
+                <table id="tabelaDados" class="table table-condensed table-hover table-striped">
+                    <tbody>
+                        
+                        <tr>
+                            <th>Descrição Comissão</th>
+                            <th>Código</th>
+                            <th>Convênio</th>
+                            <th>Procedimento</th>
+                            <th>Profissional</th>
+                            <th>Valor da Comissão</th>
+                            <th>Ações</th>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            @*<td>
+                                <button class="btn btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>
+                            </td>*@
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" style="text-align: left;">
+                                <button class="btn btn-primary" onclick="adicionarColuna()" type="button">Adicionar Comissão</button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+
+            <div class="form-actions"> 
+                <input type="button" id="btSalvar" disabled="disabled"  class="btn btn-primary" value = "Salvar" />
+                <button type="button" class="btn">Cancelar</button>
+            </div>
+        </div>
+                
+    </center>
+}
+
+<div id="myModal" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Web Clínica</h4>
+            </div>
+            <div class="modal-body">
+                <div id="divMsg"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/Telas/Comissao/Comissao.js")
+    @Scripts.Render("~/Scripts/json.js")
+}

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Profissionais Cadastrados";
+   
+}
+<br />
+
+<table id="gridDadosConvenio" class="table table-condensed table-hover table-striped">
+    <thead>
+        <tr>
+            <th data-column-id="ConvenioID" data-identifier="true" data-type="numeric">Código</th>
+            <th data-column-id="NomeConvenio" data-order="asc">Nome do Convênio</th>
+            <th data-column-id="NumeroRegistro" data-order="desc">Número do Registro ANS</th>
+            <th data-column-id="Validade" data-order="desc">Validade</th>            
+            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ação</th>
+        </tr>
+    </thead>
+</table>
+
+<center>
+    <p>
+        @Html.ActionLink("Cadastrar Novo Convênio", "Novo")
+</center>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Telas/Convenio/index.js")
+}
+
+

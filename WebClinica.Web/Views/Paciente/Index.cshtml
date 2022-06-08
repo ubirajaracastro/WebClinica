@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Pacientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<br /><br />
+
+<table id="gridDadosPaciente" class="table table-condensed table-hover table-striped">
+    <thead>
+        <tr>
+            <th data-column-id="PacienteId" data-identifier="true" data-visible="false" data-type="numeric">Codigo</th>
+            <th data-column-id="CPF" data-type="numeric">CPF</th>
+            <th data-column-id="DataNascimento" data-converter="datetime" data-order="asc">Data de Nascimento</th>
+            <th data-column-id="NomeCompleto" data-order="desc">Nome</th>
+            <th data-column-id="NomeConvenio" data-order="desc">Convênio</th>
+            <th data-column-id="Sexo" data-order="desc">Sexo</th>
+            <th data-column-id="TelefoneCelular" data-order="desc">Telefone</th>
+            @*<th data-column-id="link" data-formatter="link" data-sortable="false">Link</th>*@
+            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ação</th>
+        </tr>
+    </thead>
+</table>
+
+<center>
+    <p>
+        @Html.ActionLink("Cadastrar Novo Paciente", "ManterPaciente")
+</center>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Telas/Paciente/index.js")
+    @Scripts.Render("~/Scripts/moment.min.js")
+}
+

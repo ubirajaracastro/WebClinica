@@ -1,0 +1,141 @@
+﻿@model WebClinica.Web.Models.ConfiguracaoClinicaViewModel
+
+@{
+    ViewBag.Title = "Configuração";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Ajax.BeginForm("SalvarConfiguracao","ConfiguracaoClinica",
+     new AjaxOptions
+     {
+         OnSuccess= "OnSuccess",
+         OnFailure = "exibirModalErro",             
+         InsertionMode = InsertionMode.Replace, // <-- Substituir o conteúdo do elemento DOM
+         HttpMethod = "POST"                           // <-- método 
+
+     }))
+
+{
+    @Html.AntiForgeryToken()
+    <center>
+
+        <fieldset>
+            <legend class=".pull-right">Horários da Agenda</legend>
+            <div class=”editor-linha”>
+                <div class=”editor-label”>
+                   * Duração Média do Atendimento 
+                    @Html.EditorFor(model => model.TempoMedioAtendimento, new { htmlAttributes = new { @size = 5 } }) minutos
+                    @Html.ValidationMessageFor(model => model.TempoMedioAtendimento)
+                </div>
+                <br />
+                <div class=”editor-label”>
+                    * Atendimento
+                    @Html.EditorFor(model => model.HoraInicialAtendimento, new { htmlAttributes = new { @size = 5 } }) às
+                    @Html.EditorFor(model => model.HoraFinalAtendimento, new { htmlAttributes = new { @size = 5 } })
+                    @Html.ValidationMessageFor(model => model.HoraInicialAtendimento)
+                    @Html.ValidationMessageFor(model => model.HoraFinalAtendimento)
+                </div>
+                <br />
+                <div class=”editor-label”>
+                    * Horário de Almoço
+                    @Html.EditorFor(model => model.HorarioInicialAlmoco, new { htmlAttributes = new { @size = 5 } }) às
+                    @Html.EditorFor(model => model.HorarioFinalAlmoco, new { htmlAttributes = new { @size = 5 } })
+                    @Html.ValidationMessageFor(model => model.HorarioInicialAlmoco)
+                    @Html.ValidationMessageFor(model => model.HorarioFinalAlmoco)
+                </div>
+                <br />
+                <div class=”editor-label”>
+                    Restringir agendamentos a esses horários:
+                    @Html.CheckBoxFor(model => model.RestringirAgendamentoscomBaseHorarioAtendimento)
+                </div>
+            </div>
+            <br />
+            <legend>Serviço de Mensagens</legend>
+            <div class=”editor-linha”>
+                <div class=”editor-label”>
+                    Habilitar Envio de Emails
+                    @Html.CheckBoxFor(model => model.HabilitarEnvioEmails)
+                </div><br />
+                <div class=”editor-label”>
+                    Habilitar Envio de SMS (Verificar a ativação do serviço)
+                    @Html.CheckBoxFor(model => model.HabilitarUsoSMS)
+                </div>
+            </div>
+            <br />
+            <legend>Notificação aos Pacientes</legend>
+            <div class=”editor-linha”>
+                <div class=”editor-label”>
+                    Enviar e-mail de agendamento:
+                    @Html.CheckBoxFor(model => model.EnviarEmaildeAgendamento)
+                </div>
+                <br />
+                <div class=”editor-label”>
+                    Enviar emails um dia antes da consulta:
+                    @Html.CheckBoxFor(model => model.EnviarEmailUmDiaAntesConsulta)
+                </div>
+                <br />
+                <div class=”editor-label”>
+                    Sempre enviar SMS de agendamento:
+                    @Html.CheckBoxFor(model => model.EnviarSMSdeAgendamento)
+                </div>
+                <br />
+                <div class=”editor-label”>
+                    Enviar SMS um dia antes da consulta:
+                    @Html.CheckBoxFor(model => model.EnviarSMSUmdiaAntesdaConsulta)
+                </div>
+                <div class=”editor-label”>
+                    Enviar email de aniversário:
+                    @Html.CheckBoxFor(model => model.EnviarEmailAniversario)
+                </div>
+            </div>
+            <br />
+            <legend>Notificação aos Profissionais de Saúde</legend>
+            <div class=”editor-linha”>
+                <div class=”editor-label”>
+                     Enviar e-mail de agendamento/Consulta ao Profissional
+                    @Html.CheckBoxFor(model => model.EnviarNotificacaoaoProfissionalSaude)
+                </div>
+            </div>
+            <br />            
+              @Html.HiddenFor(model=> model.ConfiguracaoClinicaId)
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+            </div>
+        </fieldset>
+                       
+       
+    </center>
+    
+    <div id="myModal" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Web Clínica</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="divMsg">Dados salvos com sucesso.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+       
+    function exibirModalErro() {
+        $('#divMsg').html('Ocorreu um erro na gravação! Contacte o suporte.');
+        $('#myModal').modal('show');
+    };
+
+    function OnSuccess(response) {     
+        $('#myModal').modal('show');
+        
+    }
+
+</script>

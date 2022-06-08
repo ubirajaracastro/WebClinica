@@ -1,0 +1,20 @@
+﻿@using HtmlHelpers.BeginCollectionItem;
+@model WebClinica.Web.Models.PerguntasAnamneseViewModel
+
+
+@using (Html.BeginCollectionItem("Perguntas"))
+{   
+    <br />
+    @Html.DisplayTextFor(model => model.Descricao)<br />
+    <label class="checkbox-inline">       
+        @Html.RadioButtonFor(model => model.RespostaId,"1")
+        @Html.Label("Sim")       
+        &nbsp;&nbsp;
+        @Html.RadioButtonFor(model => model.RespostaId, "0")
+        @Html.Label("Não")
+
+        @Html.HiddenFor(model => model.PerguntaId)
+    </label>   
+    <br />
+}
+

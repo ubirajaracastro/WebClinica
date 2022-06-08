@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebClinica.Web.Models.ItemComissaoViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DescricaoComissao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeConvenio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeProcedimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeProfissional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorComissao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvenioId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProfissionalId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProcedimentoId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescricaoComissao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeConvenio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeProcedimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeProfissional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorComissao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvenioId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProfissionalId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProcedimentoId)
+        </td>
+        
+    </tr>
+}
+
+</table>
