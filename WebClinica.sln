@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClinica.Dominio", "WebClinica.Dominio\WebClinica.Dominio.csproj", "{54062986-A0AB-4603-8F9B-67F74CA55E5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClinica.Comum", "WebClinica.Comum\WebClinica.Comum.csproj", "{6C83F140-2D9A-4DAB-8770-20974B075BBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClinica.Negocio", "WebClinica.Negocio\WebClinica.Negocio.csproj", "{2A751245-8C03-4390-88A3-EC82B8FE66D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClinica.Web", "WebClinica.Web\WebClinica.Web.csproj", "{354D7BF5-C2C9-463E-9F89-5AF878274ED2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClinica.Model", "WebClinica.Model\WebClinica.Model.csproj", "{387448BE-C809-4B7D-9CED-5CA60DDEE29F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClinica.Startup", "WebClinica.Startup\WebClinica.Startup.csproj", "{C76CC132-F99E-4AF1-B35A-A0B448D17067}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClinica.InfraEstrutura", "WebClinica.InfraEstrutura\WebClinica.InfraEstrutura.csproj", "{6FE47FC3-00F7-4119-AFDE-ABA1EF058C91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54062986-A0AB-4603-8F9B-67F74CA55E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54062986-A0AB-4603-8F9B-67F74CA55E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54062986-A0AB-4603-8F9B-67F74CA55E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54062986-A0AB-4603-8F9B-67F74CA55E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C83F140-2D9A-4DAB-8770-20974B075BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C83F140-2D9A-4DAB-8770-20974B075BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C83F140-2D9A-4DAB-8770-20974B075BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C83F140-2D9A-4DAB-8770-20974B075BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A751245-8C03-4390-88A3-EC82B8FE66D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A751245-8C03-4390-88A3-EC82B8FE66D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A751245-8C03-4390-88A3-EC82B8FE66D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A751245-8C03-4390-88A3-EC82B8FE66D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354D7BF5-C2C9-463E-9F89-5AF878274ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354D7BF5-C2C9-463E-9F89-5AF878274ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354D7BF5-C2C9-463E-9F89-5AF878274ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354D7BF5-C2C9-463E-9F89-5AF878274ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{387448BE-C809-4B7D-9CED-5CA60DDEE29F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{387448BE-C809-4B7D-9CED-5CA60DDEE29F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{387448BE-C809-4B7D-9CED-5CA60DDEE29F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{387448BE-C809-4B7D-9CED-5CA60DDEE29F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C76CC132-F99E-4AF1-B35A-A0B448D17067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76CC132-F99E-4AF1-B35A-A0B448D17067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C76CC132-F99E-4AF1-B35A-A0B448D17067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C76CC132-F99E-4AF1-B35A-A0B448D17067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FE47FC3-00F7-4119-AFDE-ABA1EF058C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FE47FC3-00F7-4119-AFDE-ABA1EF058C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FE47FC3-00F7-4119-AFDE-ABA1EF058C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FE47FC3-00F7-4119-AFDE-ABA1EF058C91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://bira2016developer.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WebClinica.Dominio\\WebClinica.Dominio.csproj
+		SccProjectName1 = WebClinica.Dominio
+		SccLocalPath1 = WebClinica.Dominio
+		SccProjectUniqueName2 = WebClinica.Comum\\WebClinica.Comum.csproj
+		SccProjectName2 = WebClinica.Comum
+		SccLocalPath2 = WebClinica.Comum
+		SccProjectUniqueName3 = WebClinica.Negocio\\WebClinica.Negocio.csproj
+		SccProjectName3 = WebClinica.Negocio
+		SccLocalPath3 = WebClinica.Negocio
+		SccProjectUniqueName4 = WebClinica.Web\\WebClinica.Web.csproj
+		SccProjectName4 = WebClinica.Web
+		SccLocalPath4 = WebClinica.Web
+		SccProjectUniqueName5 = WebClinica.Model\\WebClinica.Model.csproj
+		SccProjectName5 = WebClinica.Model
+		SccLocalPath5 = WebClinica.Model
+		SccProjectUniqueName6 = WebClinica.Startup\\WebClinica.Startup.csproj
+		SccProjectName6 = WebClinica.Startup
+		SccLocalPath6 = WebClinica.Startup
+		SccProjectUniqueName7 = WebClinica.InfraEstrutura\\WebClinica.InfraEstrutura.csproj
+		SccProjectName7 = WebClinica.InfraEstrutura
+		SccLocalPath7 = WebClinica.InfraEstrutura
+	EndGlobalSection
+EndGlobal
